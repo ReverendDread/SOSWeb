@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket Echo Client</title>
+<link rel="stylesheet" type="text/css" href="content/styles/site.css">
+    </head>
+    <body>
+<!--        <script src="webSocket.js"></script> --> 
+  <script src="AKTProxy.js"></script>
+  <script src="AKTAuthServer.js"></script>
+  <script src="https://www.anonymouskey.com/js/AKTO.js"></script>
+<script>
+//var wsUri = "wss://www.anonymouskey.com:8443/websocket/endpoint";
+var wsUri = "ws://localhost:8080/websocket/endpoint";
+//var wsUri = "ws://www.uiscan.com:8080/Activate/auth";
+var proxy = AKTProxy(wsUri);
+
+document.addEventListener("DOMContentLoaded", function(event) {
+	console.log("115 loginPanel=" + document.getElementById('loginPanel'));
+	proxy.initiate({
+/*		
+	
+		loginPanel: document.getElementById('loginPanel'),
+		msgPanel: document.getElementById('msgPanel'),
+		txtMsg: document.getElementById('txtMsg'),
+*/
+		inputText: document.getElementById('inputText'),
+//		txtLogin: document.getElementById('txtLogin'),
+		debugTextArea: document.getElementById('debugTextArea')
+//		msgContainer: document.getElementById('msgContainer')
+	});
+});
+</script>
+
+        <h1>WebSocket Echo Client</h1>
+        <p>
+            <button onClick="proxy.login();">Connect</button>
+            <button onClick="proxy.logout();">Disconnect</button>
+            <button onClick="proxy.getStatus();">State</button>
+            <button onClick="setCookie('credentials','U5<u5|K5<5', 1);">Set Cookie</button>
+            <button onClick="setCookie('kppp','xxxx', 1);">Set Cookie 2</button>
+            <button onClick="getCookie('credentials');">get Cookie</button>
+            <button onClick="deleteAllCookies();">delete all Cookies</button>
+        </p>
+        <p>
+            <textarea id="debugTextArea" style="width:400px;height:200px;"></textarea>
+        </p>
+        <p>
+<!--              <input type="text" id="inputText" onkeydown="if(event.keyCode==13)sendMessage();"/>-->
+            <input type="text" id="inputText" />
+            <button onClick="getemailhash();">Send</button><br>
+            <input type="text" id="status" />
+<!--             <button onClick="sendMessage();">Send</button> -->
+   <div id="Initial">
+     <p id="title">Enter your email address and phone number</p>
+     <table id="topForm">
+      <form id="frmping03"   >
+        <tr><td>Email Address</td><td> <input type="text" id="email03" name="email03"></td></tr> 
+		  <tr><td>Phone Number</td><td> <input type="text" id="phone03" name="phone03"></td></tr>
+         <input type="hidden" name="AKTRequestID" value="AKTPPP03">
+	   	<input type="hidden" id="ping03" name="ping03" value=""> 
+         <input type="hidden" id = "server03" name="server03"   value="">
+         <input type="hidden" id = "socket03" name="socket03"   value="">
+         <input type="hidden" id = "pppcheck03" name="pppcheck03"   value="pppDecrypt">
+
+         <input type="hidden" id = "SecLevel" name="SecLevel" value="10">         
+   	  <tr><td colspan="2"><input id="RegisterBTN" type="button" value="Register" onclick="AKTPPP03();"></td></tr><br><br>
+   	</table>
+      </form>
+   </div>
+   <div id="Main"> 
+     <p id="title">User Login</p>
+      <form id="frmmain"   >
+     <table id="topForm">
+      <TR><TD class="alt"><label for="username" style="label">username:</label></TD>
+      	<TD><input type="text" id="username" value="anonymous"></td></tr>
+      <TR><TD class="alt"><label for="password" style="label">Password:</label></TD>
+      	<TD><input type="password" id="password" value=""></td></tr>
+   		<tr><TD><input type="hidden" id="phantomcode" value="Aegis"></td></tr>  
+	 </table>
+
+	<div id="Phantom">
+		<table>
+    	  <tr><td colspan="2"><input id="LoginBTN" type="button" value="Phantomize" onclick="Phantomize();"></td><td><td></td>
+   	  		  <td colspan="2"><input id="RegisterBTN" type="button" value="New User Register" onclick="UserReg();"></td></tr><tr></tr>
+		</table>
+	</div>
+
+
+        </p>
+    </body>
+</html>

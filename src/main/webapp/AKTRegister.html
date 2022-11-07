@@ -1,0 +1,604 @@
+<HTML>
+<HEAD>
+<style>
+	body, input, select, textarea {
+		color: #474747;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 16pt;
+		font-weight: 300;
+		line-height: 1.65em;
+	}
+
+
+/* body {
+    background-color: #FFF;
+}
+*/
+
+tr {
+    margin-left: 10px;
+    height: 30px;
+}
+
+#RegTable td.alt {
+    width: 100px;
+    }
+
+label {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+}
+
+#Cell {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+}
+
+#Email {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+} 
+
+
+#initial {
+ display: table-row;
+ position: absolute;
+ top: 170px;
+ left: 100px;
+ z-index: 2;
+}
+
+#setupSite {
+ display: none;
+ position: absolute;
+ top: 190px;
+ left: 100px;
+ z-index: 2;
+}
+
+#regerror {
+ display: none;
+ position: relative;
+ top: 50px;
+ left: 10px;
+ z-index: 2;
+}
+
+#preInitial {
+ display: none;
+ position: absolute;
+ top: 170px;
+ left: 650px;
+ z-index: 2;
+}
+
+#frmReturn {
+ display: block;
+ position: absolute;
+ top: 110px;
+ left: 150px;
+ z-index: 3;
+}
+
+#credentials {
+ display: none;
+ position: absolute;
+ top: 170px;
+ left: 150px;
+ z-index: 1;
+}
+
+#credentialPart {
+ display: none;
+ position: relative;
+ top: 50px;
+ left: 150px;
+ z-index: 1;
+}
+
+#questionPart {
+ display: none;
+ position: relative;
+ top: 50px;
+ left: 150px;
+ z-index: 1;
+}
+
+#complete {
+
+ display: none;
+
+ position: absolute;
+ top: 170px;
+ left: 150px;
+
+ z-index: 4;
+ }
+
+#error {
+
+ display: none;
+
+ position: absolute;
+ top: 170px;
+ left: 150px;
+
+ z-index: 4;
+ }
+
+
+
+#Q2Q {
+
+ display: none;
+
+}
+
+#Q2A {
+
+ display: none;
+
+}
+
+#submitIt {
+
+ display: none;
+
+}
+
+#title {
+
+   font-style: bold;
+
+   font-size: 22px;
+
+   font-family: arial;
+
+   font-weight: bold;
+
+}
+/* Form */
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: border-color 0.2s ease-in-out;
+		-webkit-transition: border-color 0.2s ease-in-out;
+		-o-transition: border-color 0.2s ease-in-out;
+		-ms-transition: border-color 0.2s ease-in-out;
+		transition: border-color 0.2s ease-in-out;
+		background: #fff;
+		border: solid 1px #e0e0e0;
+		border-radius: 5px;
+		color: inherit;
+		display: block;
+		outline: 0;
+		padding: 0.75em;
+		text-decoration: none;
+		width: 100%;
+	}
+
+		input[type="text"]:focus,
+		input[type="password"]:focus,
+		input[type="email"]:focus,
+		textarea:focus {
+			border-color: #038c13;
+		}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"] {
+		line-height: 1em;
+	}
+	
+	input[type=button] {
+    padding:10px 15px; 
+    background:#3e779d;
+    color: #fff; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+	label {
+		display: block;
+		color: inherit;
+		font-weight: 600;
+		line-height: 1.75em;
+		margin-bottom: 0.5em;
+	}
+
+	::-webkit-input-placeholder {
+		color: #999999;
+		position: relative;
+		top: 3px;
+	}
+
+	:-moz-placeholder {
+		color: #999999;
+	}
+
+	::-moz-placeholder {
+		color: #999999;
+	}
+
+	:-ms-input-placeholder {
+		color: #999999;
+	}
+
+	.formerize-placeholder {
+		color: #999999;
+	}
+/* Header */
+
+	#header {
+		text-align: center;
+		padding: 0 0 0 0;
+		background-color: #000000;
+/*		background-image: url("images/bg02.png"), url("images/bg02.png"), url("images/bg01.png"); */
+		background-position: top left,					top left,					top left;
+		background-size: 100% 6em,					100% 6em,					auto;
+		background-repeat: no-repeat,					no-repeat,					repeat;
+	}
+
+		#header h1 {
+			padding: 0 0 2.75em 0;
+			margin: 0;
+		}
+
+			#header h1 a {
+				font-size: 1.5em;
+				letter-spacing: -0.025em;
+				border: 0;
+			}
+
+	#nav {
+		cursor: default;
+		background-color: #000000;
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		padding: 0;
+	}
+
+		#nav:after {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 0.75em;
+			background-color: #038c13;
+			background-image: url("images/bg01.png");
+		}
+
+		#nav > ul {
+			margin: 0;
+		}
+
+			#nav > ul > li {
+				position: relative;
+				display: inline-block;
+				margin-left: 1em;
+			}
+
+				#nav > ul > li a {
+					color: #c0c0c0;
+					text-decoration: none;
+					border: 0;
+					display: block;
+					padding: 1.5em 0.5em 1.35em 0.5em;
+				}
+
+				#nav > ul > li:first-child {
+					margin-left: 0;
+				}
+
+				#nav > ul > li:hover a {
+					color: #fff;
+				}
+
+				#nav > ul > li.current {
+					font-weight: 600;
+				}
+
+					#nav > ul > li.current:before {
+						-moz-transform: rotateZ(45deg);
+						-webkit-transform: rotateZ(45deg);
+						-o-transform: rotateZ(45deg);
+						-ms-transform: rotateZ(45deg);
+						transform: rotateZ(45deg);
+						width: 0.75em;
+						height: 0.75em;
+						content: '';
+						display: block;
+						position: absolute;
+						bottom: -0.5em;
+						left: 50%;
+						margin-left: -0.375em;
+						background-color: #038c13;
+						background-image: url("images/bg01.png");
+					}
+
+					#nav > ul > li.current a {
+						color: #fff;
+					}
+
+				#nav > ul > li.active a {
+					color: #fff;
+				}
+
+				#nav > ul > li > ul {
+					display: none;
+				}
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script src="https://use.fontawesome.com/0a5d40364b.js"></script>
+	
+ <script src="https://www.uiscan.com/js/AKTBase58.js"></script> 
+ <script src="https://www.uiscan.com/js/AKTO.js"></script> 
+ <script src="https://www.uiscan.com/js/Secp256k1.js"></script> 
+ <script src="https://www.uiscan.com/js/SOS.js"></script> 
+ <script src="https://www.uiscan.com/js/AKTUtils.js"></script> 
+ <script src="https://www.uiscan.com/js/AKTAuthServer.js"></script>
+  <script src="https://www.uiscan.com/js/AKTSafeProxy.js"></script>
+  
+<!--   	<script src="https://www.anonymouskey.com/js/SafeMoonO.js"></script> -->
+<!--   	<script src="https://www.uiscan.com/js/AKTAuthServer.js"></script>  
+ <script src="AKTUtils.js"></script> 
+  	<script src="AKTAuthServer.js"></script>
+-->	
+    <title>ShieldMe365.com - The Evolution of Security</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://www.shieldme365.com/css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="https://www.shieldme365.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://www.shieldme365.com/jumbotron.css" rel="stylesheet">
+<script>
+//var wsUri = "wss://www.anonymouskey.com:8443/websocket/endpoint";
+
+/*
+document.addEventListener("DOMContentLoaded", function(event) {
+	console.log("115 loginPanel=" + document.getElementById('loginPanel'));
+	proxy.initiate({
+		inputText: document.getElementById('inputText'),
+		debugTextArea: document.getElementById('debugTextArea')
+	}); */
+//});
+</script>
+<script>
+function SecLev(Level) {
+document.getElementById('SecLevel').value=Level;
+alert(document.getElementById('SecLevel').value);
+}
+</script>
+  	<script>	
+//  		var wsUri = "ws://192.168.2.17:12315";
+//  		var wsUri = "wss://safemoon.akcode.com:12317";
+  		var wsUri = "wss://sostest1.akcode.com:12317";
+  	</script>
+
+</head>
+<!-- 
+<body onLoad= "DoOnload()" >
+
+<a href='javascript:AlertPD();'>pingData</a>
+-->
+<!--  <body onLoad= "ping('192.168.2.26','12322','0.0','0')" > -->
+
+<!-- <body onLoad= "setupRegisterServer('207.81.189.121','12312')" > -->
+
+<body onLoad= "setupRegisterServer('127.0.0.1','12312')" >
+
+<!-- 
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.shieldme365.com/index.php"><img src="http://www.shieldme365.com/assets/img/WebLogo.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://www.shieldme365.com/index.php#about">About</a></li>
+        <li><a href="http://www.shieldme365.com/technology.php">Technology</a></li>
+        <li><a href="http://www.shieldme365.com/products.php">Products</a></li>
+        <li><a href="http://www.shieldme365.com/FAQ.php">FAQ</a></li>
+         <li><a href="http://www.shieldme365.com/index.php#contact">Contact Us</a></li>
+      </ul>
+        </div>
+      </div>
+    </nav>
+  -->
+ <div id="setupSite">
+         <p>
+            <button onClick="checkLogin();">login</button>
+            <button onClick="registerStart();">register</button>
+            <button onClick="proxy.getStatus();">State</button>
+        </p>
+ </div>   
+   <div id="frmReturn">
+    <p id="valueRet" name="valueRet"></p>
+   </div>
+   
+<div id="preInitial">
+     <p id="title">Version 1.5.01</p>
+     <form name="frmSave" id="savefrm"   >
+     <table id="topSave">
+        <tr><td colspan="2"><b>Initial Ping</b></td></tr> 
+        <tr><td>pb</td><td>    <span id="pb"></span></td></tr> 
+        <tr><td>pbhex</td><td> <span id="pbhex"></span></td></tr> 
+        <tr><td>pbu5B64</td><td>  <span id="pbu5B64"></span></td></tr> 
+        <tr><td>pbcomp</td><td>  <span id="pbcomp"></span></td></tr>
+        <tr><td colspan="2"><b>Register final</b></td></tr> 
+        <tr><td>pb</td><td>    <span id="pb2"></span></td></tr> 
+        <tr><td>pbhex</td><td> <span id="pbhex2"></span></td></tr> 
+        <tr><td>pbu5B64</td><td>  <span id="pbu5B642"></span></td></tr>
+     	</table> 
+
+   	<br><br>
+    </form>
+</div>
+
+   <div id="initial">
+   	 <div id ="regerror">
+   		<p id = "errormessage">Email address already used. Please try again.</p><br><br>
+   	 </div>
+     <p id="title">Enter your email address </p>
+     <table id="topForm">
+      <form id="frmping03"   >
+        <tr><td>Email Address</td><td> <input type="text" id="email03" name="email03" value="lynn@safemoon.ltd"></td></tr> 
+<!--		  <tr><td>Phone Number</td><td> <input type="text" id="phone03" name="phone03"></td></tr> -->
+<!-- 		  <tr><td>Phone Number</td><td> <input type="text" id="phone03" name="phone03" onfocus="ValidateEmail(this.form.email03);"></td></tr> -->
+         <input type="hidden" name="AKTRequestID" value="AKTSFMICE03">
+	   	<input type="hidden" id="PUBKEY" name="PUBKEY" value=""> 
+         <input type="hidden" id = "LANG" name="en"   value="">
+         <input type="hidden" id = "AKTAPIID" name="AKTAPIID"   value="AKTSFMICE03">
+<!--        <input type="hidden" id = "pppcheck03" name="pppcheck03"   value="pppDecrypt">  -->  
+<!--
+         <input type="hidden" id = "globalserver03" name="globalserver03"   value="">
+         <input type="hidden" id = "localserver03" name="localserver03"   value="">
+         <input type="hidden" id = "globalsocket03" name="globalsocket03"   value="">
+         <input type="hidden" id = "localsocket03" name="localsocket03"   value="">
+ -->
+         <input type="hidden" id = "SecLevel" name="SecLevel" value="10">         
+   	  <tr><td colspan="2"><input id="RegisterBTN" type="button" value="Register" onclick="AKTSFMICE03('AKTSFMICE03');"></td></tr><br><br>
+<!--    	  <tr><td colspan="2"><input id="CancelBTN" type="button" value="Cancel" onclick="ClosePage();"></td></tr>  -->
+   	</table>
+      </form>
+   </div>
+
+  <form name="frmregister" id="frmregister">
+     <div id="credentials">
+     <div id="credentialPart">
+     <p id="title">Please fill in the form to register</p>
+     <Table name="RegTable">
+      <input type="hidden" id="Cell">
+      <input type="hidden" id="Email">
+      <TR><TD class="alt"><span id="Cellx" style="label">Cell Number:</span></TD><TD><span id="ShowCell"></span></td></tr>
+      <TR><TD class="alt"><span id="Emailx" style="label">Email Address:</span></TD><TD><span id="ShowEmail"></span></td></tr>
+      <TR><TD class="alt"><label for="Username" style="label">Username:</label></TD><TD><input type="text" id="username" value="username"></td></tr>
+      <TR><TD class="alt"><label for="pass1" style="label">Password:</label></TD><TD><input type="password" id="pass1" value="password"></td></tr>
+      <TR><TD class="alt"><label for="pass3" style="label">Retype Password:</label></TD><TD><input type="text" id="pass2" value="password"></TD></tr>
+      <TD><input type="password" id="pass2" onkeyup="CheckPW()"><span id="confirmMessage" class="confirmMessage"></span></td></tr>
+     </table>
+ 	</div>
+     <div id="questionPart">
+     <table name="regQ">
+      <TR><TD class="alt"><label for="Q1SQ" style="label">Security Question:</label></TD><TD><select id="Q1">
+       <option id="SASQ1"></option>
+       <option id="Q1a1"></option>
+       <option id="Q1a2"></option>
+       <option id="Q1a3"></option>
+       <option id="Q1a4"></option>
+       <option id="Q1a5"></option>
+       <option id="Q1a6"></option>
+       <option id="Q1a7"></option>
+     </select></td></tr>
+     <TR><TD class="alt"><label for="Q1A" style="label">Security Answer:</label></TD>
+     <TD><input type="text" id="Q1Answer" onfocus="getQuestions(2, 2)"></td></tr>
+     <TR id="Q2Q"><TD class="alt"> <label for="Q2" style="label">Security Question:</label></TD><TD><select id="Q2">
+       <option id="SASQ2"></option>
+       <option id="Q2a1"></option>
+       <option id="Q2a2"></option>
+       <option id="Q2a3"></option>
+       <option id="Q2a4"></option>
+       <option id="Q2a5"></option>
+       <option id="Q2a6"></option>
+       <option id="Q2a7"></option>
+     </select></td></tr>
+     <TR id="Q2A"><TD class="alt"><label for="Q2A" style="label">Security Answer:</label></TD>
+     <TD><input type="text" id="Q2Answer" onfocus="showSubmit()"></td></tr>
+    </table>
+    </div>
+
+     <div id="submitIt">
+     <table name="butQ">
+     <TR id="submitItbut"><TD class="alt"><a "registerFinal07(7);"> </a></td></tr> <br><br>
+	<input type="button" id = "regFinal" value="Finalize Registration Here" onclick="registerFinal07('reg07');"><br><br>
+       <input type="hidden" id = "qact" name="qact" value="0">
+    </table>
+    </div>
+    </div>
+   </form>
+
+<!--   </div> --> 
+   
+   <Div id="complete">
+	<input type="button" id = "completebtn" value="Back" onclick="reset();"><br><br>
+   <h1>Registration was completed</h1>
+ <!--   <p> Please close the browser and restart ZecureiT.  </p>--> 
+   
+
+   <p>Thank you for registering with ShieldME365! <br>If you already have the application, close the browser and start using the application, otherwise, you can go to <a href="http://www.shieldme365.com/products.php">ShieldME365 website</a> to download the apps to begin using the secure system.<br><BR>
+   When you first install an app it will ask you to Login. Enter the username and password you just created. 
+   <br><br>
+   Please check back with the website often to see what new apps, or existing apps that have been ported to new Operating Systems, have been uploaded to the system. If you have an app or and idea you want to see us build for the ShieldME365 community, please send your request to apps@shieldme365.com
+   </p>
+ 
+   </div>
+
+   <Div id="Error">
+        Error</td><td> <input type="text" id="error" name="error"></td></tr> 
+	<input type="button" id = "errorbtn" value="Back" onclick="reset();"><br><br>
+
+
+ 	</div>
+ <div>
+        <form id="frmdisplay">
+        <table name="displaytable">
+            <textarea id="status" style="width:400px;height:30px;"></textarea>
+        </table>
+        </form>
+</div>
+<form id="frmping01"   >
+      <input type="hidden" name="AKTRequestID" value="AKTPPP01">
+	  <input type="hidden" id="ping01"  name="ping01"   value=""> 
+      <input type="hidden" id ="server01" name="server01"   value="">
+      <input type="hidden" id ="socket01" name="socket01"   value="">
+</form>
+
+<form name="frmPong" id="pongfrm"   >
+		<input type="hidden" id="pong" name="pong" value=""><p id="PongValue"></p><br>  
+		<input type="hidden" id="kppp" name="kppp" value=""><p id="KpppValue"></p>  <br>
+
+</form>
+
+<form name="frmStore" id="storefrm"   >
+		<input type="hidden" id="emailg" name="emailg" value="">  
+		<input type="hidden" id="phoneg" name="phoneg" value="">  
+		<input type="hidden" id="decrypted" name="decrypted" value=""> 
+		<input type="hidden" id="userg" name="userg" value=""> 
+		<input type="hidden" id="passg" name="passg" value=""> 
+		<input type="hidden" id="replicate" name="replicate" value="false"> 
+		<input type="hidden" id="dualreg" name="dualreg" value="false"> 
+</form>
+
+	
+</form>
+
+
+
+
+</body>
+</html>

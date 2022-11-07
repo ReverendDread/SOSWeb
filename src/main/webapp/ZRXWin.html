@@ -1,0 +1,484 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>ZRXAdmin Management</title>
+</head>
+<style>
+	body, input, select, textarea {
+		color: #474747;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 10pt;
+		font-weight: 300;
+		line-height: 1.65em;
+	}
+	tr {
+    	margin-left: 10px;
+    	height: 10px;
+	}
+
+	th {
+    	margin-left: 10px;
+    	height: 10px;
+	}
+	
+table { class="gridtable";
+ 	position: relative;
+	width: 100%;
+	display:block;
+}
+
+thead, tbody { display: block}
+
+tbody {
+ position: relative;
+	height: 400px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+#admin
+ {
+ display: none;
+ position: absolute;
+ top: 80px;
+ left: 100px;
+ z-index: 2;
+}
+
+#displayarea
+ {
+ display: none;
+ position: absolute;
+ top: 20px;
+ left: 100px;
+ z-index: 2;
+}
+
+#userdisplay
+ {
+ display: none;
+ position: absolute;
+ top: 100px;
+ left: 100px;
+ z-index: 2;
+}
+
+
+#main
+ {
+ display: none;
+ position: absolute;
+ top: 100px;
+ left: 100px;
+ z-index: 2;
+}
+
+#cryptologin
+ {
+ display: table-row;
+ position: absolute;
+ top: 100px;
+ left: 100px;
+ z-index: 2;
+}
+
+#listUsers
+ {
+ display: none;
+ position: absolute;
+ top: 100px;
+ left: 100px;
+ z-index: 2;
+}
+
+#changeSecurity
+ {
+ display: none;
+ position: absolute;
+ top: 200px;
+ left: 100px;
+ z-index: 2;
+}
+
+#deleteUser
+ {
+ display: none;
+ position: absolute;
+ top: 200px;
+ left: 100px;
+ z-index: 2;
+}
+
+#showUser
+ {
+ display: none;
+ position: absolute;
+ top: 200px;
+ left: 100px;
+ z-index: 2;
+}
+
+#updateUser
+ {
+ display: none;
+ position: absolute;
+ top: 200px;
+ left: 100px;
+ z-index: 2;
+}
+
+#svs
+ {
+ display: none;
+ position: absolute;
+ top: 200px;
+ left: 100px;
+ z-index: 2;
+}
+
+#users
+ {
+ display: none;
+ position: relative;
+ top: 100px;
+ left: 100px;
+ z-index: 2;
+}
+
+#credentials
+ {
+ display: none;
+ position: relative;
+ top: 10px;
+ left: 100px;
+ z-index: 2;
+}
+
+#personal
+ {
+ display: none;
+ position: relative;
+ top: 10px;
+ left: 100px;
+ z-index: 2;
+}
+
+#delete
+ {
+ display: none;
+ position: relative;
+ top: 10px;
+ left: 100px;
+ z-index: 2;
+}
+
+#error
+ {
+ display: none;
+ position: absolute;
+ top: 20px;
+ left: 20px;
+ z-index: 2;
+}
+
+#success
+ {
+ display: none;
+ position: absolute;
+ top: 20px;
+ left: 100px;
+ z-index: 2;
+}
+
+#work
+ {
+ display: none;
+ position: relative;
+ top: 20px;
+ left: 20px;
+ z-index: 2;
+}
+
+#userlist
+ {
+ display: none;
+ position: relative;
+ top: 20px;
+ left: 20px;
+ z-index: 2;
+}
+
+
+#title {
+   font-style: bold;
+   font-size: 16px;
+   font-family: arial;
+   font-weight: bold;
+}
+
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+
+table.gridtable th {
+	border-width: 1px;
+	height: 8px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+
+table.gridtable td {
+	border-width: 1px;
+	height: 8px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+
+table.gridtable button {
+	border-width: 1px;
+	padding: 8px;
+	width: 50px; 
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+
+
+</style>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
+</script>
+
+ 
+<script src="https://www.anonymouskey.com/js/AKTO.js"></script>
+<script src="ZRXAdmin.js"></script>
+<script src="AKTAuthServer.js"></script>
+<script>
+//	var wsUri = "ws://192.168.2.151:12315";
+//	var wsUri = "ws://192.168.2.17:12315";
+//	var wsUri = "ws://www.anonymouskey.com:12315";
+	var wsUri = "ws://127.0.0.1:12315";
+</script>
+<!-- <script src="AKTUtils.js"></script> -->
+<!-- <script src="AKTmir.js"></script> -->
+
+<body onLoad= "setupServer('207.81.189.121','12312')" >
+
+<div id="main">
+   <p> AKT ZRX Administration Center</p><br>
+   <form id="frmmain"   >
+     <table id="topForm">
+   	  <tr><td><input id="listBTN" 	type="button" value="List All Users" onclick="getUserList();"></td>
+   	  	  <td><input id="changeBTN" type="button" value="Change User Security" onclick="changeSecurityForm();"></td>
+	  <td colspan="2"><input id="deleteBTN" 	type="button" value="Delete User" onclick="deleteUsersForm();"></td></tr><tr></tr>
+   	  	  <td><input id="svsBTN" 				type="button" value="Increase SVS Storage" onclick="updateUserSVSForm();"></td></tr>
+   	  	  <td><input id="contactBTN" 			type="button" value="Get Contacts" onclick="getContacts();"></td></tr>
+   	  <tr><td><input id="CancelBTN" type="button" value="Cancel" onclick="loginForm();"></td></tr>
+	</table>
+	</form>
+</div>
+	
+<div id= "admin">	
+   <form id="frmadmin"   >
+     <p id="title02">AKTZRX Administration Center</p>
+     <table id="adminform">
+		<tr><td>User Email Address</td>
+        	<td> <input type="text" width="200px" id="email01" name="email01" value=""></td>
+        	<td>or UID</td>
+        	<td> <input type="text" width="200px" id="uid01" name="uid01" value=""></td></tr> 
+	  </table>
+	</form>
+</div>
+	
+<div id="cryptologin">
+     <p id="title01">AKTZRX Administration Center</p>
+	<form id = "frmlogin">
+		<p>Administrator Authentication</p>
+		</table>
+			<table class="gridtable">
+			<tr><td>Server Internet Name</td>
+        		<td> <input type="text" width="200px" id="server" name="server" value="Dev"></td></tr> 
+			<tr><td>Username</td>
+        		<td> <input type="text" width="200px" id="cryptouser" name="cryptouser" value=" "></td></tr> 
+			<tr><td>Password</td>
+        		<td> <input type="text" width="200px" id="cryptopass" name="cryptopass" value=" "></td></tr> 
+   	    	<tr><td ><input id="LoginBTN"  type="button" value="Login" onclick="cryptoLogin();"></td></tr>
+		</table>
+	</form>
+</div>
+	
+	
+<div id = "changeSecurity">
+      <form id="frmchangeuserssec"   >
+     <p id="title02">AKT Change Users Security Level</p>
+     <table id="securityform">
+		<tr><td>Set User Security To</td>
+       		<td> <input type="text" width="200px" id="sec01" name="sec01" value="1"></td></tr> 
+   	  	<tr><td><input id="setSecBTN" type="button" value="Set Security" onclick="updateOneSecurity();"></td></tr>
+   	  <tr><td><input id="CancelBTN02" type="button" value="Cancel" onclick="cancel();"></td></tr>
+	</table>
+	</form>
+</div>
+
+<div id = "deleteUser">
+      <form id="frmdelete"   >
+     <p id="title03">AKTZRX Delete User</p>
+     <table id="deleteform">
+   	  	<tr><td><input id="deleteBTN02" 	type="button" value="Delete User" 	onclick="deleteOneUser();"></td></tr>
+   	    <tr><td><input id="CancelBTN03" type="button" value="Cancel" 		onclick="cancel();"></td></tr>
+	</table>
+	</form>
+</div>
+
+<div id = "showUser">
+      <form id="frmshowuser"   >
+     <p id="title04">AKTZRX Show User Details</p>
+     <table id="showform">
+   	  	<tr><td><input id="showBTN" type="button" value="Show User" onclick="showUser();"></td></tr>
+   	  <tr><td><input id="CancelBTN04" type="button" value="Cancel" onclick="cancel();"></td></tr>
+	</table>
+	</form>
+</div>
+
+<div id = "updateUser">
+     <form id="frmupdate"   >
+     <p id="title05">AKTZRX Update User Details</p>
+     <table id="updateform">
+   	  	<tr><td><input id="updateBTN" type="button" value="Update User" onclick="updateUser();"></td></tr>
+   	  <tr><td><input id="CancelBTN05" type="button" value="Cancel" onclick="cancel();"></td></tr>
+	</table>
+	</form>
+</div>
+
+<div id = "svs">
+     <form id="frmsvs"   >
+     <p id="title07">AKTZRX Update User SVS Storage</p>
+     <table id="updateform">
+		<tr><td>Set User Security To (gigs)</td>
+       		<td> <input type="text" width="200px" id="svs07" name="svs07" value="1"></td></tr> 
+   	  	<tr><td><input id="svsBTN02" type="button" value="Increase SVS Storage" onclick="updateUserSVS();"></td></tr>
+   	  <tr><td><input id="CancelBTN07" type="button" value="Cancel" onclick="cancel();"></td></tr>
+	</table>
+	</form>
+</div>
+
+
+<div id="work">
+	<form id="workform">
+   	  <input id="CancelBTN08" type="button" value="Cancel" onclick="cancel();">
+	</form>
+</div>
+
+<div id=ppp>
+  <form id="frmzrxping01"   >
+    <input type="hidden" name="AKTRequestID" value="ZRXPPP01">
+   	<input type="hidden" id="ping01" name="ping01" value=""> 
+  </form>
+  
+  <form id="frmzrxping03"   >
+    <input type="hidden" name="AKTRequestID" value="ZRXPPP03">
+   	<input type="hidden" id="ping03" 	name="ping03" value=""> 
+   	<input type="hidden" id="kppp03" 	name="kppp03" value=""> 
+    <input type="hidden" id="pppcheck03" name="pppcheck03"   value="pppDecrypt">
+  </form>
+</div>
+
+<div id="error">
+     <p>AKTZRX Administration Center</p><br>
+   	  <input id="CancelBTN09" type="button" value="Continue" onclick="loginForm();">
+     <p> You have made an error in your request</p><br>
+	<TABLE id="errorTable" width="400px" Height = "100px" border="1">
+	</TABLE>
+</div>
+
+<div id="success">
+     <p> Your request was successful.</p><br>
+<form id="successform">
+   	  <input id="CancelBTN10" type="button" value="Continue" onclick="cancel();">
+</form>
+</div>
+
+<div id="userlist">
+  	<INPUT type="button" value="Cancel" onclick="cancel()" />
+  	<INPUT type="button" value="User List" onclick="listUsersForm()" />
+  	<INPUT type="button" value="Credentials" onclick="credentialsForm()" />
+  	<INPUT type="button" value="Personal" onclick="personalForm()" />
+  	<INPUT type="button" value="Delete User" onclick="deleteUserForm()" />
+</div>
+
+ <div id = "users">
+   <form id= "allusersform">
+	<TABLE id="userTable" width="700px" border="1">
+		<TR>
+			<TD><INPUT type="checkbox" name="chk"/></TD>
+			<TD> Row </TD>
+			<TD> UID </TD>
+			<TD>User <INPUT type="text" width="600px" /> </TD>
+		</TR>
+	</TABLE>
+</div>  
+
+<div id = "credentials">
+	<TABLE id="credTable" width="700px" border="1">
+		<TR>
+		</TR>
+	</TABLE>
+  </form>
+</div>  
+<div id = "personal">
+	<TABLE id="personalTable" width="700px" border="1">
+		<TR>
+			<TD><INPUT type="checkbox" name="chk"/></TD>
+			<TD> UID </TD>
+			<TD>first <INPUT type="text" width="100px" /> </TD>
+			<TD>last <INPUT type="text" width="100px" /> </TD>
+			<TD>phone <INPUT type="text" width="100px" /> </TD>
+		</TR>
+	</TABLE>
+  </form>
+</div>  
+
+<div id = "delete">
+	<TABLE id="deleteTable" width="700px" border="1">
+		<TR>
+		</TR>
+	</TABLE>
+  </form>
+</div>  
+
+<div id = "userdisplay">
+     <Table name="displayuser" id="displayuser">
+      <TR><TD class="alt"><span id="Cellx" style="label">UID:</span></TD><TD><span id="showUID"></span></td></tr>
+      <TR><TD class="alt"><span id="Emailx" style="label">Email Address:</span></TD><TD><span id="showEmail"></span></td></tr>
+      <TR><TD class="alt"><label for="secLevel" style="label">secLevel:</label></TD><TD><input type="text" id="secLevel"></td></tr>
+  	<TR><TD><INPUT type="button" value="Delete User" onclick="deleteOneUser()" /></TD>
+  	<TD><INPUT type="button" value="Change Security Level" onclick="updateSecurity()" /></TD>
+  	<TD><INPUT type="button" value="Cancel" onclick="listUsersForm()" /></TD></TR>
+     </table>
+
+
+  </form>
+</div>  
+
+</div>
+
+ <div id = "displayArea">
+        <form id="frmdisplay">
+        <table "displaytable">
+            <textarea id="status" style="width:600px;height:20px;"></textarea>
+        </table>
+        </form>
+</div>
+
+
+</body>
+</html>

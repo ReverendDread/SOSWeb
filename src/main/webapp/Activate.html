@@ -1,0 +1,443 @@
+<HTML>
+<HEAD>
+    <link rel="icon" href="akt_icon.png">
+<style>
+	body, input, select, textarea {
+		color: #474747;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 16pt;
+		font-weight: 300;
+		line-height: 1.65em;
+	}
+
+
+/* body {
+    background-color: #FFF;
+}
+*/
+
+tr {
+    margin-left: 10px;
+    height: 30px;
+}
+
+#RegTable td.alt {
+    width: 100px;
+    }
+
+label {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+}
+
+#Cell {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+}
+
+#Email {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+} 
+
+#Initial {
+ display: table-row;
+ position: absolute;
+ top: 170px;
+ left: 100px;
+ z-index: 2;
+}
+
+#Complete {
+ display: none;
+ position: absolute;
+ top: 170px;
+ left: 150px;
+ z-index: 4;
+ }
+
+#Invalid {
+ display: none;
+ position: absolute;
+ top: 100px;
+ left: 300px;
+ z-index: 4;
+ }
+#submitIt {
+
+ display: none;
+
+}
+
+#title {
+
+   font-style: bold;
+
+   font-size: 22px;
+
+   font-family: arial;
+
+   font-weight: bold;
+
+}
+/* Form */
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: border-color 0.2s ease-in-out;
+		-webkit-transition: border-color 0.2s ease-in-out;
+		-o-transition: border-color 0.2s ease-in-out;
+		-ms-transition: border-color 0.2s ease-in-out;
+		transition: border-color 0.2s ease-in-out;
+		background: #fff;
+		border: solid 1px #e0e0e0;
+		border-radius: 5px;
+		color: inherit;
+		display: block;
+		outline: 0;
+		padding: 0.75em;
+		text-decoration: none;
+		width: 100%;
+	}
+
+		input[type="text"]:focus,
+		input[type="password"]:focus,
+		input[type="email"]:focus,
+		textarea:focus {
+			border-color: #038c13;
+		}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"] {
+		line-height: 1em;
+	}
+	
+	input[type=button] {
+    padding:10px 15px; 
+    background:#3e779d;
+    color: #fff; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+	label {
+		display: block;
+		color: inherit;
+		font-weight: 600;
+		line-height: 1.75em;
+		margin-bottom: 0.5em;
+	}
+
+	::-webkit-input-placeholder {
+		color: #999999;
+		position: relative;
+		top: 3px;
+	}
+
+	:-moz-placeholder {
+		color: #999999;
+	}
+
+	::-moz-placeholder {
+		color: #999999;
+	}
+
+	:-ms-input-placeholder {
+		color: #999999;
+	}
+
+	.formerize-placeholder {
+		color: #999999;
+	}
+/* Header */
+
+	#header {
+		text-align: center;
+		padding: 0 0 0 0;
+		background-color: #000000;
+/*		background-image: url("images/bg02.png"), url("images/bg02.png"), url("images/bg01.png"); */
+		background-position: top left,					top left,					top left;
+		background-size: 100% 6em,					100% 6em,					auto;
+		background-repeat: no-repeat,					no-repeat,					repeat;
+	}
+
+		#header h1 {
+			padding: 0 0 2.75em 0;
+			margin: 0;
+		}
+
+			#header h1 a {
+				font-size: 1.5em;
+				letter-spacing: -0.025em;
+				border: 0;
+			}
+
+	#nav {
+		cursor: default;
+		background-color: #000000;
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		padding: 0;
+	}
+
+		#nav:after {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 0.75em;
+			background-color: #038c13;
+			background-image: url("images/bg01.png");
+		}
+
+		#nav > ul {
+			margin: 0;
+		}
+
+			#nav > ul > li {
+				position: relative;
+				display: inline-block;
+				margin-left: 1em;
+			}
+
+				#nav > ul > li a {
+					color: #c0c0c0;
+					text-decoration: none;
+					border: 0;
+					display: block;
+					padding: 1.5em 0.5em 1.35em 0.5em;
+				}
+
+				#nav > ul > li:first-child {
+					margin-left: 0;
+				}
+
+				#nav > ul > li:hover a {
+					color: #fff;
+				}
+
+				#nav > ul > li.current {
+					font-weight: 600;
+				}
+
+					#nav > ul > li.current:before {
+						-moz-transform: rotateZ(45deg);
+						-webkit-transform: rotateZ(45deg);
+						-o-transform: rotateZ(45deg);
+						-ms-transform: rotateZ(45deg);
+						transform: rotateZ(45deg);
+						width: 0.75em;
+						height: 0.75em;
+						content: '';
+						display: block;
+						position: absolute;
+						bottom: -0.5em;
+						left: 50%;
+						margin-left: -0.375em;
+						background-color: #038c13;
+						background-image: url("images/bg01.png");
+					}
+
+					#nav > ul > li.current a {
+						color: #fff;
+					}
+
+				#nav > ul > li.active a {
+					color: #fff;
+				}
+
+				#nav > ul > li > ul {
+					display: none;
+				}
+				
+   
+
+</style>
+
+    <title>Secured With Anonymous Key Technology</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://www.shieldme365.com/css/bootstrap.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="https://www.shieldme365.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://www.shieldme365.com/jumbotron.css" rel="stylesheet">
+
+<script>
+function SecLev(Level) {
+document.getElementById('SecLevel').value=Level;
+alert(document.getElementById('SecLevel').value);
+}
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--  <script src="AKT.js"></script>
+  <script src="AKTmir.js"></script>
+  <script src="AKTRegister.js"></script>
+  -->
+  
+    <script src="https://www.anonymouskey.com/js/AKTO.js"></script>
+	<script src="Activate.js"></script>
+    <script src="webSocket.js"></script>
+    <script src="AKTProxy.js"></script>
+<script src="https://use.fontawesome.com/0a5d40364b.js"></script>
+<script>
+	var wsUri = "ws://192.168.2.203:12317";
+//	var wsUri = "ws://www.uiscan.com:8080/websocket/endpoint";
+//	var wsUri = "ws://www.uiscan.com:8080/AKTChat/chat";
+//	var proxy = CreateProxy(wsUri);
+</script>
+
+<meta charset="utf-8"/>
+</head>
+
+
+    <body onLoad= "setup('67.212.168.34','12312')" > 
+
+
+
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="www.anonymouskey.com"><img src="AKT_inline_sm.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="www.shieldme365.com">Go back</a></li>
+<!--
+        <li><a href="http://www.shieldme365.com/technology.php">Technology</a></li>
+        <li><a href="http://www.shieldme365.com/products.php">Products</a></li>
+        <li><a href="http://www.shieldme365.com/FAQ.php">FAQ</a></li>
+         <li><a href="http://www.shieldme365.com/index.php#contact">Contact Us</a></li>
+-->
+      </ul>
+        </div>
+      </div>
+    </nav>
+<!-- 
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://www.shieldme365.com/index.php"><img src="http://www.shieldme365.com/assets/img/WebLogo.png"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="http://www.shieldme365.com/index.php#about">About</a></li>
+        <li><a href="http://www.shieldme365.com/technology.php">Technology</a></li>
+        <li><a href="http://www.shieldme365.com/products.php">Products</a></li>
+        <li><a href="http://www.shieldme365.com/FAQ.php">FAQ</a></li>
+         <li><a href="http://www.shieldme365.com/index.php#contact">Contact Us</a></li>
+      </ul>
+        </div>
+      </div>
+    </nav>
+  -->   
+   <div id="frmReturn">
+    <p id="valueRet" name="valueRet"></p>
+    <p id="status" name="status"></p>
+   </div>
+
+  <div class="container">
+   <div id="Initial">
+   <p id="demo" name="demo" color="000"></p>
+     <p id="title">Shieldme Activation</p>
+     <table id="topForm">
+      <form id="frmlogin"   >
+        <tr><td>Username</td><td> <input type="text" id="user12" name="user12" value="lspraggs"></td></tr> 
+		<tr><td>Password</td><td> <input type="text" id="pass12" name="pass12" value="12345678"></td></tr>
+		<tr><td>Token</td><td> <input type="text" id="token12" name="token12" value="DVZH0PBHMID5JU7M"></td></tr>
+   	  	<tr><td colspan="2"><input id="ActivateBTN" type="button" value="Activate" onclick="activate();"></td></tr>
+   	</table>
+      </form>
+      
+	<form name="frmauth" id="frmauth"   >
+         <input type="hidden" id = "AKTRequestID" 	name="AKTRequestID" value="authorize">
+         <input type="hidden" id = "u5auth" 		name="u5auth"   value="">
+         <input type="hidden" id = "serverauth" 	name="serverauth"   value="">
+         <input type="hidden" id = "socketauth" 	name="socketauth"   value="">
+    </form>
+     
+    <form id="frmactivate">
+         <input type="hidden" 						name="AKTRequestID" value="activate">
+	   	 <input type="hidden" id  = "u5activate" 	name="u5activate" value=""> 
+         <input type="hidden" id  = "emailactivate" name="emailactivate"   value="">
+         <input type="hidden" id  = "tokenactivate" name="tokenactivate"   value="">
+         <input type="hidden" id  = "serveractivate" name="serveractivate"   value="">
+         <input type="hidden" id  = "socketactivate" name="socketactivate"   value="">
+    </form>
+
+   </div>
+  </div>
+   
+   <Div id="Complete">
+   <h1>Your activation was completed successfully</h1>
+
+   <br><br>
+   Please use the applications and keep your information secure.
+   </p>
+ 
+   </div>
+   <Div id="Invalid">
+   <h2>Invalid Payment Token</h2>
+   </div>
+</div>
+
+<form name="frmStore" id="frmstore"   >
+		<input type="hidden" id="emailg" name="emailg" value="">  
+		<input type="hidden" id="phoneg" name="phoneg" value="">  
+		<input type="hidden" id="decrypted" name="decrypted" value=""> 
+		<input type="hidden" id="userg" name="userg" value=""> 
+		<input type="hidden" id="passg" name="passg" value=""> 
+		<input type="hidden" id="dualreg" name="dualreg" value="true"> 
+		<input type="hidden" id="replicate" name="replicate" value="false"> 
+</form>
+<form name="frmchktoken" id="frmchktoken03"   >
+         <input type="hidden" id = "AKTRequestID" name="AKTRequestID" value="checktoken">
+         <input type="hidden" id = "pongtc" name="pongtc"   value="">
+      </form>
+
+
+
+<script>
+var referer = window.location.hostname;
+//document.getElementById("demo").innerHTML = referer;
+//document.body.innerHTML = document.body.innerHTML.replace('www.shieldme365.com', referer);
+
+var anchor = document.referrer;
+//<!-- var anchor = location.hostname;
+var result = anchor.hostname; // Returns:'developer.mozilla.org' 
+//document.getElementById("demo").innerHTML = anchor;
+document.body.innerHTML = document.body.innerHTML.replace(/www.shieldme365.com/g, anchor);
+
+</script>
+</body>
+</html>

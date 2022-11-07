@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>SOS Transport Protocol</title>
+</head>
+<body>
+
+ <script src="https://www.uiscan.com/js/AKTBase58.js"></script> 
+ <script src="https://www.uiscan.com/js/AKTO.js"></script> 
+ <script src="https://www.uiscan.com/js/PHCFunctions.js"></script> 
+ <script src="https://www.uiscan.com/js/Secp256k1.js"></script> 
+ <script src="https://www.uiscan.com/js/SOS.js"></script> 
+
+<p><a id="myLink1" href="#" onclick="SOSFunctions();">SOS Transport Functions</a></p>
+
+<script>
+function SOSFunctions(){
+	var privateKey = makePrivateKey();
+	var publicKey  = makePublicKey(privateKey);
+	var compressed = compressPublicKey(publicKey);
+	console.log("20 privateKey =" + privateKey);
+	console.log("21 publicKey  =" + publicKey);
+	console.log("22 compressed =" + compressed);
+	var serX  = makePrivateKey();
+	var serK  = makePublicKey(serX);
+	var serComp = compressPublicKey(serK);
+	var iceKey1 = iceBerg(privateKey, serK);
+	var iceKey2 = iceBerg(serX, publicKey);
+	console.log("29 iceKey1 =" + iceKey1);
+	console.log("30 iceKey2 =" + iceKey2);
+	var data = "abcdefghijklmnopqrstuvwxyz 0123456";
+	var data2 = "port=12312,server=127.0.0.1,00#218#|AKTRequestID=GR8PPP01|PING=N3hUXTfDxwb5ShgYBSAgrvvZFs2Z0zKyPgQ6ay8Nsw32uTfSZdhnN2OsKnA7n8GtXVlISvkTTcxutZ3BfkxLO8Z85rH1eTeD0nZyKtNl13liAa.3.nTIArNq1p8LNuehuhSZwiE5k9SFUigxpN3R7fzN6otTAKRm1fAHa06aM0k]|AKTAPIID=register|";
+	var dataHex = AKT.HEXFormat(data);
+	var enc = iceBergEncryptText(iceKey1, dataHex);
+	console.log("35 enc=" + enc);
+	var dec = iceBergDecryptText(iceKey2, enc);
+	var chek = AKT.fromHex(dec);
+	console.log("37 chek=" + chek);
+	
+	var enc2 = iceBergEncryptText(iceKey1, data2);
+	console.log("42 enc2=" + enc2);
+	var dec2 = iceBergDecryptText(iceKey1, enc2);
+	console.log("44 chek=" + dec2);
+	
+}
+</script>
+</body>
+</html>

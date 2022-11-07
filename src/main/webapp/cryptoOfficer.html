@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+	body, input, select, textarea {
+		color: #474747;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 12pt;
+		font-weight: 300;
+		line-height: 1.65em;
+	}
+
+
+/* body {
+    background-color: #FFF;
+}
+*/
+
+tr {
+    margin-left: 10px;
+    height: 30px;
+}
+
+#RegTable td.alt {
+    width: 100px;
+    }
+
+label {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+}
+
+#Cell {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+}
+
+#Email {
+    color: maroon;
+    margin-left: 10px;
+    height: 20px;
+} 
+#functions {
+ display: table-row;
+ position: absolute;
+ top: 60px;
+ left: 10px;
+ z-index: 2;
+}
+
+
+#cryptoLogin {
+ display: none;
+ position: absolute;
+ top: 100px;
+ left: 100px;
+ z-index: 2;
+}
+
+#displayArea {
+ display: table-row;
+ position: absolute;
+ top: 10px;
+ left: 10px;
+ z-index: 2;
+}
+
+
+
+#user {
+ display: none;
+ position: absolute;
+ top: 110px;
+ left: 10px;
+ z-index: 2;
+}
+
+#actions {
+ display: block;
+ position: absolute;
+ top: 110px;
+ left: 150px;
+ z-index: 3;
+}
+
+#error {
+
+ display: none;
+
+ position: absolute;
+ top: 170px;
+ left: 150px;
+
+ z-index: 4;
+ }
+
+#submitIt {
+
+ display: none;
+
+}
+
+#title {
+
+   font-style: bold;
+
+   font-size: 22px;
+
+   font-family: arial;
+
+   font-weight: bold;
+
+}
+/* Form */
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-o-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
+		-moz-transition: border-color 0.2s ease-in-out;
+		-webkit-transition: border-color 0.2s ease-in-out;
+		-o-transition: border-color 0.2s ease-in-out;
+		-ms-transition: border-color 0.2s ease-in-out;
+		transition: border-color 0.2s ease-in-out;
+		background: #fff;
+		border: solid 1px #e0e0e0;
+		border-radius: 5px;
+		color: inherit;
+		display: block;
+		outline: 0;
+		padding: 0.75em;
+		text-decoration: none;
+		width: 100%;
+	}
+
+		input[type="text"]:focus,
+		input[type="password"]:focus,
+		input[type="email"]:focus,
+		textarea:focus {
+			border-color: #038c13;
+		}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"] {
+		line-height: 1em;
+	}
+	
+	input[type=button] {
+    padding:10px 15px; 
+    background:#3e779d;
+    color: #fff; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+	label {
+		display: block;
+		color: inherit;
+		font-weight: 600;
+		line-height: 1.75em;
+		margin-bottom: 0.5em;
+	}
+
+	::-webkit-input-placeholder {
+		color: #999999;
+		position: relative;
+		top: 3px;
+	}
+
+	:-moz-placeholder {
+		color: #999999;
+	}
+
+	::-moz-placeholder {
+		color: #999999;
+	}
+
+	:-ms-input-placeholder {
+		color: #999999;
+	}
+
+	.formerize-placeholder {
+		color: #999999;
+	}
+/* Header */
+
+	#header {
+		text-align: center;
+		padding: 0 0 0 0;
+		background-color: #000000;
+/*		background-image: url("images/bg02.png"), url("images/bg02.png"), url("images/bg01.png"); */
+		background-position: top left,					top left,					top left;
+		background-size: 100% 6em,					100% 6em,					auto;
+		background-repeat: no-repeat,					no-repeat,					repeat;
+	}
+
+		#header h1 {
+			padding: 0 0 2.75em 0;
+			margin: 0;
+		}
+
+			#header h1 a {
+				font-size: 1.5em;
+				letter-spacing: -0.025em;
+				border: 0;
+			}
+
+	#nav {
+		cursor: default;
+		background-color: #000000;
+		background-image: -moz-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -webkit-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -o-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: -ms-linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		background-image: linear-gradient(top, rgba(0,0,0,0), rgba(0,0,0,0.3)), url("images/bg01.png");
+		padding: 0;
+	}
+
+		#nav:after {
+			content: '';
+			display: block;
+			width: 100%;
+			height: 0.75em;
+			background-color: #038c13;
+			background-image: url("images/bg01.png");
+		}
+
+		#nav > ul {
+			margin: 0;
+		}
+
+			#nav > ul > li {
+				position: relative;
+				display: inline-block;
+				margin-left: 1em;
+			}
+
+				#nav > ul > li a {
+					color: #c0c0c0;
+					text-decoration: none;
+					border: 0;
+					display: block;
+					padding: 1.5em 0.5em 1.35em 0.5em;
+				}
+
+				#nav > ul > li:first-child {
+					margin-left: 0;
+				}
+
+				#nav > ul > li:hover a {
+					color: #fff;
+				}
+
+				#nav > ul > li.current {
+					font-weight: 600;
+				}
+
+					#nav > ul > li.current:before {
+						-moz-transform: rotateZ(45deg);
+						-webkit-transform: rotateZ(45deg);
+						-o-transform: rotateZ(45deg);
+						-ms-transform: rotateZ(45deg);
+						transform: rotateZ(45deg);
+						width: 0.75em;
+						height: 0.75em;
+						content: '';
+						display: block;
+						position: absolute;
+						bottom: -0.5em;
+						left: 50%;
+						margin-left: -0.375em;
+						background-color: #038c13;
+						background-image: url("images/bg01.png");
+					}
+
+					#nav > ul > li.current a {
+						color: #fff;
+					}
+
+				#nav > ul > li.active a {
+					color: #fff;
+				}
+
+				#nav > ul > li > ul {
+					display: none;
+				}
+
+</style>
+</head>
+	<script src="https://use.fontawesome.com/0a5d40364b.js"></script>
+  	<script src="https://www.anonymouskey.com/js/AKTO.js"></script>
+  	<script src="AKTAuthServer.js"></script>
+<!--
+  	<script src="AKTProxy.js"></script> 
+   	<script src="testBench.js"></script>
+   	<script src="AKTUtils.js"></script>
+   -->  	
+<!-- 	<script src="AKTUtils.js"></script> -->
+  	
+  	<script>	
+  		var wsUri = "ws://192.168.2.151:12315";
+  	</script>
+<body>
+<div id = "actions">
+        <p>
+            <button onClick="setupCryptoLogin();">crypto login</button>
+             <button onClick="ppp.deleteAllAKTLocal();">delete all stored data</button>
+        </p>
+</div>  
+<div id = "functions">
+            <button onClick="deleteUser();">delete user</button>
+            <button onClick="updateSecurity();">change security level</button>
+            <button onClick="ppp.deleteAllAKTLocal();">delete all stored data</button>
+</div>   
+ <div id = "displayArea">
+        <form id="frmdisplay">
+        <table "displaytable">
+            <textarea id="status" style="width:600px;height:20px;"></textarea>
+        </table>
+        </form>
+</div>
+
+<div id="cryptoLogin">
+            <button onClick="cryptoLogin();">Login</button>
+       <table>
+			<tr><td>Server Name</td>
+        		<td> <input type="text" width="200px" id="server" name="server" value="Dev"></td></tr> 
+		  <tr><td>Username</td><td> <input type="text" id="cryptouser" name="cryptouser" value="lspraggs"></td></tr>
+		  <tr><td>Password</td><td> <input type="text" id="cryptopass" name="cryptopass" value="12345678"></td></tr>
+       </table>
+</div>
+
+<div id = "user">
+<p> user credentials </p>
+    <table>
+		  <tr><td>UID or</td><td> <input type="text" id="uid" name="uid" value=""></td></tr>
+		  <tr><td>email </td><td> <input type="text" id="uemail" name="uemail" value=""></td></tr>
+		  <tr><td>security level </td><td> <input type="text" id="seclevel" name="seclevel" value=""></td></tr>
+    </table>
+</div>            
+</body>
+</html>
